@@ -281,9 +281,38 @@ nav h1 a {
   color: #666;
 }
 
+@media only screen and (min-width: 550px) {
+
+  /* ====================== Restaurant Filtering ====================== */
+  .filter-options {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .filter-options h2 {
+    margin: 0 15px;
+  }
+
+  .filters {
+    margin: 0 1em;
+  }
+
+}
+
 @media only screen and (min-width: 992px) {
+  /* ====================== Navigation ====================== */
+  
   nav h1 {
     padding: 1em 1.5em;
+    font-size: 
   }
+
+  nav h1 a {
+    font-size: 1.2em;
+  }
+
+  /* ====================== Restaurant Filtering ====================== */
+
+
 
 }
