@@ -299,12 +299,23 @@ nav h1 a {
 
 }
 
+@media only screen and (min-width: 768px) {
+/* ====================== Restaurant Listing ====================== */
+  #restaurants-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+
+}
+
 @media only screen and (min-width: 992px) {
   /* ====================== Navigation ====================== */
   
   nav h1 {
     padding: 1em 1.5em;
-    font-size: 
+   
   }
 
   nav h1 a {
