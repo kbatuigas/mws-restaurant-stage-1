@@ -62,7 +62,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 nav {
   width: 100%;
   background-color: #252831;
-  text-align:center;
+  text-align: left;
 }
 nav h1 {
   margin: auto;
@@ -81,7 +81,7 @@ nav h1 a {
     background-color: #eee;
     font-size: 17px;
     margin: 0;
-    width: calc(50% - 80px);
+    /*width: calc(50% - 80px);*/
 }
 
 /* Display list items side by side */
@@ -208,22 +208,24 @@ nav h1 a {
 }
 .inside #map-container {
   background: blue none repeat scroll 0 0;
-  height: 87%;
-  position: fixed;
+  height: 300px;
+  /*position: fixed;
   right: 0;
   top: 80px;
-  width: 50%;
+  width: 90%;*/
 }
+
 .inside #map {
   background-color: #ccc;
   height: 100%;
   width: 100%;
 }
-.inside #footer {
+/*.inside #footer {
   bottom: 0;
   position: absolute;
   width: 50%;
 }
+*/
 #restaurant-name {
   color: #f18200;
   font-family: Arial,sans-serif;
