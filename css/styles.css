@@ -195,6 +195,11 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Details ====================== */
+.inside {
+  display: flex;
+  flex-direction: column;
+}
+
 .inside header {
   position: fixed;
   top: 0;
@@ -309,6 +314,14 @@ nav h1 a {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    
+  }
+
+  #restaurants-list li {
+    max-width: 42.5%;
+    padding: 1em;
+    margin-left: auto;
+    margin-right: auto;
   }
 
 }
@@ -318,11 +331,15 @@ nav h1 a {
   
   nav h1 {
     padding: 1em 1.5em;
-   
   }
 
   nav h1 a {
     font-size: 1.2em;
   }
+
+/* ====================== Restaurant Listing ====================== */
+  #restaurants-list li {
+    max-width: 300px;
+  } 
 
 }
