@@ -148,18 +148,19 @@ nav h1 a {
   background-color: #fff;
   border: 2px solid #ccc;
   font-family: Arial,sans-serif;
-  margin: 15px;
+  margin: 15px 0;
   min-height: 380px;
-  padding: 0 30px 25px;
-  text-align: left;
-  width: 270px;
+  padding: 0;
+  text-align: center;
+  min-width: 270px;
+  max-width: 100%
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;
   display: block;
   margin: 0;
   max-width: 100%;
-  min-height: 248px;
+  /*min-height: 248px;*/
   min-width: 100%;
 }
 #restaurants-list li h1 {
@@ -282,7 +283,6 @@ nav h1 a {
 }
 
 @media only screen and (min-width: 550px) {
-
   /* ====================== Restaurant Filtering ====================== */
   .filter-options {
     display: flex;
@@ -307,7 +307,6 @@ nav h1 a {
     flex-wrap: wrap;
   }
 
-
 }
 
 @media only screen and (min-width: 992px) {
@@ -321,9 +320,5 @@ nav h1 a {
   nav h1 a {
     font-size: 1.2em;
   }
-
-  /* ====================== Restaurant Filtering ====================== */
-
-
 
 }
