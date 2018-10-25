@@ -44,3 +44,20 @@ self.addEventListener('activate', function(e) {
         })
     );
 });
+
+/* Manage fetch requests */
+self.addEventListener('fetch', function(e) {
+    let requestUrl = new URL(e.request.url);
+    if (requestUrl.origin === location.origin) {
+        if (requestUrl.pathname.startsWith('/restaurant.html')) {
+            e.respondWith(caches.match('/restaurant.html'));
+            return;
+        }
+    }
+
+    e.respondWith(
+        caches.match(e.request).then(function(response) {
+            return response || fetch(e.request);
+        })
+    );
+});
