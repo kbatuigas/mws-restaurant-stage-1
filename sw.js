@@ -57,19 +57,21 @@ self.addEventListener('activate', function(e) {
 
 /* Manage fetch requests */
 self.addEventListener('fetch', function(e) {
-    //let requestUrl = new URL(e.request.url);
-    //if (requestUrl.origin === location.origin) {
+    const requestUrl = new URL(e.request.url);
+    
+    //Hijack only requests made to app (leaflet and mapbox will bypass)
+    if (requestUrl.origin === location.origin) {
         
-    //    if (requestUrl.pathname.startsWith('/restaurant.html')) {
-    //        e.respondWith(caches.match('/restaurant.html'));
-    //        return;
-    //    }
+        if (requestUrl.pathname.startsWith('/restaurant.html')) {
+            e.respondWith(caches.match('/restaurant.html'));
+            return;
+        }
 
         //if (requestUrl.pathname.startsWith('/img')) {
         //    e.respondWith(serveImage(e.request));
         //    return;
         //}
-    //}
+    }
 
     e.respondWith(
         caches.match(e.request).then(function(response) {
@@ -87,7 +89,7 @@ self.addEventListener('fetch', function(e) {
                         })
                         .catch(function(err) {
                             console.error(err);
-                        })    
+                        });    
             }
         })
     );
