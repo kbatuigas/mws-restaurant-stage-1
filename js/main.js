@@ -72,8 +72,8 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
  * Initialize leaflet map, called from HTML.
  */
 initMap = () => {
-  if (navigator.onLine) {
-    try {
+  
+    
       self.newMap = L.map('map', {
             center: [40.722216, -73.987501],
             zoom: 12,
@@ -87,10 +87,8 @@ initMap = () => {
           'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         id: 'mapbox.streets'
       }).addTo(newMap);
-    } catch(error) {
-      console.log("Map failed to initialize", error);
-    }
-  }  
+    
+    
   updateRestaurants();
 }
 /* window.initMap = () => {

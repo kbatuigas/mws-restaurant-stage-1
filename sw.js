@@ -2,7 +2,7 @@ const appName = 'restaurant-reviews';
 const staticCacheName = appName + '-1.0';
 //const imageCache = appName + '-imgs';
 
-const allCaches = [
+const cacheFiles = [
     '/',
     '/restaurant.html',
     '/css/styles.css',
@@ -29,14 +29,14 @@ const allCaches = [
 self.addEventListener('install', function(e) {
     e.waitUntil(
         caches.open(staticCacheName).then(function(cache) {
-            return cache.addAll(allCaches);
+            return cache.addAll(cacheFiles);
         })
     );
 });
 
-/* This delete old static caches (if any) upon
+/* This deletes old static caches (if any) upon
 *  service worker activation
-*/
+
 
 self.addEventListener('activate', function(e) {
     e.waitUntil(
@@ -44,7 +44,7 @@ self.addEventListener('activate', function(e) {
             return Promise.all(
                 cacheNames.filter(function(cacheName) {
                     return cacheName.startsWith(appName) &&
-                        (!allCaches.includes(cacheName));
+                        (!cacheFiles.includes(cacheName));
                 }).map(function(cacheName) {
                     return caches.delete(cacheName);
                 })
@@ -52,6 +52,7 @@ self.addEventListener('activate', function(e) {
         })
     );
 });
+*/ 
 
 
 /* Manage fetch requests */
