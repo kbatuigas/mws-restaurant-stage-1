@@ -2,7 +2,7 @@ const appName = 'restaurant-reviews';
 const staticCacheName = appName + '-1.0';
 //const imageCache = appName + '-imgs';
 
-const allCaches = [
+const cacheFiles = [
     '/',
     '/restaurant.html',
     '/css/styles.css',
@@ -29,14 +29,14 @@ const allCaches = [
 self.addEventListener('install', function(e) {
     e.waitUntil(
         caches.open(staticCacheName).then(function(cache) {
-            return cache.addAll(allCaches);
+            return cache.addAll(cacheFiles);
         })
     );
 });
 
-/* This delete old static caches (if any) upon
+/* This deletes old static caches (if any) upon
 *  service worker activation
-*/
+
 
 self.addEventListener('activate', function(e) {
     e.waitUntil(
@@ -44,7 +44,7 @@ self.addEventListener('activate', function(e) {
             return Promise.all(
                 cacheNames.filter(function(cacheName) {
                     return cacheName.startsWith(appName) &&
-                        (!allCaches.includes(cacheName));
+                        (!cacheFiles.includes(cacheName));
                 }).map(function(cacheName) {
                     return caches.delete(cacheName);
                 })
@@ -52,23 +52,26 @@ self.addEventListener('activate', function(e) {
         })
     );
 });
+*/ 
 
 
 /* Manage fetch requests */
 self.addEventListener('fetch', function(e) {
-    //let requestUrl = new URL(e.request.url);
-    //if (requestUrl.origin === location.origin) {
+    const requestUrl = new URL(e.request.url);
+    
+    //Hijack only requests made to app (leaflet and mapbox will bypass)
+    if (requestUrl.origin === location.origin) {
         
-    //    if (requestUrl.pathname.startsWith('/restaurant.html')) {
-    //        e.respondWith(caches.match('/restaurant.html'));
-    //        return;
-    //    }
+        if (requestUrl.pathname.startsWith('/restaurant.html')) {
+            e.respondWith(caches.match('/restaurant.html'));
+            return;
+        }
 
         //if (requestUrl.pathname.startsWith('/img')) {
         //    e.respondWith(serveImage(e.request));
         //    return;
         //}
-    //}
+    }
 
     e.respondWith(
         caches.match(e.request).then(function(response) {
@@ -86,7 +89,7 @@ self.addEventListener('fetch', function(e) {
                         })
                         .catch(function(err) {
                             console.error(err);
-                        })    
+                        });    
             }
         })
     );

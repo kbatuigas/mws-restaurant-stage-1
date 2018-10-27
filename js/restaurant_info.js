@@ -17,7 +17,7 @@ initMap = () => {
       console.error(error);
     } else {
         if (navigator.onLine) {
-          try {      
+          try {   
             self.newMap = L.map('map', {
               center: [restaurant.latlng.lat, restaurant.latlng.lng],
               zoom: 16,
@@ -33,13 +33,13 @@ initMap = () => {
             }).addTo(newMap);
             DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
           } catch(error) {
-            console.log("Map failed to initialize", error);
+            console.log('Unable to initialize map', error);
           }
-        }
-        fillBreadcrumb();
-      }
+        }  
+      fillBreadcrumb(); 
+    } 
   });
-}  
+}         
  
 /* window.initMap = () => {
   fetchRestaurantFromURL((error, restaurant) => {

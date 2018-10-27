@@ -88,7 +88,7 @@ initMap = () => {
         id: 'mapbox.streets'
       }).addTo(newMap);
     } catch(error) {
-      console.log("Map failed to initialize", error);
+      console.log('Unable to initialize map', error);
     }
   }  
   updateRestaurants();
